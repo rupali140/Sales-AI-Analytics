@@ -16,11 +16,19 @@ st.set_page_config(
     layout="wide",
 )
 
-API_BASE_URL = "http://127.0.0.1:8000"
+
+import os
+
+API_BASE_URL = os.getenv(
+    "API_BASE_URL",
+    "http://127.0.0.1:8000"
+).rstrip("/")
+
 SALES_URL = f"{API_BASE_URL}/api/sales"
 IMPORT_URL = f"{API_BASE_URL}/api/sales/import"
 PREDICTION_URL = f"{API_BASE_URL}/api/predictions/revenue"
 INSIGHTS_URL = f"{API_BASE_URL}/api/insights"
+
 
 REQUEST_TIMEOUT = 30
 MAX_UPLOAD_BYTES = 10 * 1024 * 1024
